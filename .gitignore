@@ -144,3 +144,6 @@ nginx-conf/local/nginx.conf
 
 data/
 data/*
+files/
+files/*
+files/.keep
