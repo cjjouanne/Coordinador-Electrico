@@ -1,5 +1,77 @@
-<form method="POST" action="">
-  {{form.hidden_tag()}}
-  <input id="name" name="name" required type="text" value="">
-  <input id="submit" name="submit" type="submit" value="Listo">
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Coordinador - Suscripciones</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">Coordinador Electrico</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Cerrar Sesi贸n</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container p-2">
+            <div class="row">
+                <div class="col-sm mb-5">
+                    <h1>Suscribir Central</h1>
+                    <form method="POST" action="">
+                      {{form.hidden_tag()}}
+                      <div class="form-group">
+                        <label for="exampleInput">Etiqueta</label>
+                        <input type="text" class="form-control" id="exampleInput" name="name" required value="">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInput">Trigger</label>
+                        <input type="text" class="form-control" id="exampleInput" name="trigger" value="0.0">
+                      </div>
+                      <button class="btn btn-primary" id="sbmt" name="submit" type="submit">SUSCRIBIRME</button>
+                    </form>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <h2>Suscripciones</h2>
+                    {% if subscriptions %}
+                        <div class="conatiner">
+                            <table class="table table-borderless">
+                                {% for s in subscriptions %}
+                                    <tr>
+                                        <td>{{s.name}}</td>
+                                        <td>{{s.trigger}}</td>
+                                        <td>
+                                            <form method="POST" action="./unsubscribe">
+                                              <input type="hidden" value="{{s.id}}" name="subscription">
+                                              <button class="btn btn-danger btn-padding-y-sm" type="submit">ELIMINAR</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <a class="btn btn-primary mt-3" href="/get_report">RECIBIR REPORTE</a>
+                        </div>
+
+                    {% else %}
+                        <div class="container pt-3">
+                            <h4>Suscribete para recibir tu reporte diario</h4>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

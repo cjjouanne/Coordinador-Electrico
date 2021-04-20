@@ -1,5 +1,6 @@
+
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from coordinador.models import User
 
@@ -31,4 +32,5 @@ class LoginForm(FlaskForm):
 
 class SubscribeForm(FlaskForm):
     name = StringField('Name', validators = [DataRequired(), Length(min = 2, max = 20)])
+    trigger = FloatField('Trigger')
     submit = SubmitField('Listo')
