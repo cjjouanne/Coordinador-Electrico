@@ -5,7 +5,7 @@
 
 This project has been developed by [@cjjouanne] (https://github.com/cjjouanne) to provide notifications about the daily operating program for power generators delivered by the National Electric Coordinator of Chile. 
 
-> ⚠️ This is an independent project, and it does not take care of problems generated as a result of its malfunction.
+> ⚠️ This is an independent project, and it does not take responsability of problems generated as a result of its malfunction.
 
 ## Hosting 🌐
 
